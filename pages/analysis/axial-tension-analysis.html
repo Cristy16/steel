@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Axial Tension Analysis</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="dashboard-card">
+            <h2>AXIAL TENSION: ANALYSIS</h2>
+            
+            <fieldset>
+                <legend>1. Section Selection</legend>
+                <div class="input-row">
+                    <select id="shapeType" onchange="filterFamilies()"><option>Type</option></select>
+                    <select id="familyHead" onchange="filterMembers()"><option>Family</option></select>
+                    <select id="memberName" onchange="getSelectedShape()"><option>Member</option></select>
+                </div>
+                <div id="shapeSpecs"></div>
+            </fieldset>
+
+            <fieldset>
+                <legend>2. Material & Parameters</legend>
+                <select id="steelGrade">
+                    <option value="50,65">A992 (Fy: 50, Fu: 65)</option>
+                    <option value="36,58">A36 (Fy: 36, Fu: 58)</option>
+                </select>
+            </fieldset>
+
+            <button class="calc-btn" id="runCalc">CALCULATE CAPACITY</button>
+            <div id="results" class="results-box hidden"></div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initCSV } from '../../js/main.js';
+        import { runTensionMath } from '../../js/calculations/axialTension.js';
+
+        // Initialize CSV on load
+        window.onload = () => initCSV();
+
+        document.getElementById('runCalc').onclick = () => {
+            const shape = window.getSelectedShape();
+            const grade = document.getElementById('steelGrade').value.split(',');
+            const results = runTensionMath(shape, parseFloat(grade[0]), parseFloat(grade[1]));
+            
+            const resDiv = document.getElementById('results');
+            resDiv.classList.remove('hidden');
+            resDiv.innerHTML = `<h3>Pn: ${results.Pn} kips</h3><p>Limit State: Gross Yielding</p>`;
+        };
+    </script>
+</body>
+</html>

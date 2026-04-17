@@ -1,8 +1,8 @@
 Steel-Design-App/
 │
-├── index.html                          # Main Landing Page (Metallic Dashboard)
+├── index.html
 │
-├── pages/                              # Selection Pages (Tension, Bending, etc.)
+├── pages/
 │   ├── axial-tension.html
 │   ├── axial-compression.html
 │   ├── bending-members.html
@@ -10,35 +10,48 @@ Steel-Design-App/
 │   ├── combined-loading.html
 │   └── connections.html
 │
-├── pages/analysis/                     # Specific Analysis Calculators
-│   ├── axial-tension-analysis.html
-│   ├── axial-compression-analysis.html
-│   ├── bending-analysis.html
-│   ├── shear-analysis.html
-│   ├── combined-analysis.html
-│   └── connections-analysis.html
-│
-├── pages/design/                       # Specific Design Calculators
-│   ├── axial-tension-design.html
-│   ├── axial-compression-design.html
-│   ├── bending-design.html
-│   ├── shear-design.html
-│   ├── combined-design.html
-│   └── connections-design.html
+├── pages/
+│   ├── analysis/
+│   │   ├── axial-tension-analysis.html
+│   │   ├── axial-compression-analysis.html
+│   │   ├── bending-analysis.html
+│   │   ├── shear-analysis.html
+│   │   ├── combined-analysis.html
+│   │   └── connections-analysis.html
+│   │
+│   └── design/
+│       ├── axial-tension-design.html
+│       ├── axial-compression-design.html
+│       ├── bending-design.html
+│       ├── shear-design.html
+│       ├── combined-design.html
+│       └── connections-design.html
 │
 ├── css/
-│   └── styles.css                      # Global Dashboard & metallic theme
+│   └── styles.css
 │
 ├── js/
-│   ├── main.js                         # CSV Parser initialization (PapaParse)
-│   ├── navigation.js                   # Handles transitions between pages
-│   └── calculations/                   # Engineering Logic modules
-│       ├── axialTension.js
-│       ├── axialCompression.js
-│       ├── bending.js
-│       ├── shear.js
-│       ├── combined.js
-│       └── connections.js
+│   ├── core/
+│   │   ├── main.js              # CSV Parser (PapaParse)
+│   │   ├── navigation.js        # Page transitions
+│   │   └── utils.js             # Shared helpers (optional but recommended)
+│   │
+│   └── calculations/
+│       ├── analysis/
+│       │   ├── axial-tension-analysis.js
+│       │   ├── axial-compression-analysis.js
+│       │   ├── bending-analysis.js
+│       │   ├── shear-analysis.js
+│       │   ├── combined-analysis.js
+│       │   └── connections-analysis.js
+│       │
+│       └── design/
+│           ├── axial-tension-design.js
+│           ├── axial-compression-design.js
+│           ├── bending-design.js
+│           ├── shear-design.js
+│           ├── combined-design.js
+│           └── connections-design.js
 │
-└── data/
-    └── aisc-shapes-database-v160-2.csv  # Your uploaded CSV database
+├── data/
+│   └── aisc-shapes-database-v160-2.csv
